@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Card Adding Page : Kanban</title>
+    </head>
+    <style>
+        a{
+            color: white;
+        }
+        h3{
+            font-size: larger;
+            color: white;
+        }
+        label{
+            font-size: larger;
+            color: white;
+        }
+        p{
+            font-size: larger;
+            color: white;
+        }
+        body, html {
+            height: 100%;
+        }
+        body {
+            background: linear-gradient(to bottom, #000000 0%, #b0b0b2 100%);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+    </style>
+
+    <body>
+        <div align="right">
+            <a href="/{{ display_name }}/{{ id }}/home">Home Page</a> | 
+            <a href="/{{ display_name }}/{{ id }}/summary">Summary</a>|
+            <a href="/">Logout</a> &nbsp;
+        </div>
+        <div>
+            <h3>Welcome {{ display_name }}</h3>
+        </div>
+        <div align = "middle">
+            <form method="POST">
+                <label> List</label>
+                <select name="card-links" size="1">
+                    <option selected value="{{ listid }}">{{ listname }}</option>
+                    {% for i in l %}
+                        {% if (i['list_name'] != listname)%}
+                        <option value="{{ i['list_id'] }}">{{ i['list_name'] }}</option>
+                        {% else %}
+                        <option value="{{ i['list_id'] }}">{{ i['list_name'] }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+                </p><br><br>
+                {% if(cid) %}
+                    <label>Card ID</label>
+                    <input type="text" name = "C_ID" value = "{{ cid }}" disabled/><br><br>
+                    <label>Title</label>
+                    <input type="text" name = "Title" value="{{ card['card_name'] }}"/><br><br>
+                    <label>Content</label>
+                    <input type="text" name = "Content" value="{{ card['card_details'] }}"/><br><br>
+                    <label>Deadline Date</label>
+                    <input type = "date" name = "Deadline" value="{{ card['deadline_date'] }}"/><br><br>
+                {% else %}
+                    <label>Card ID</label>
+                    <input type="number" name="C_ID" placeholder="Enter Card ID" required="required"/></br><br>
+                    <label>Title</label>
+                    <input type="text" name = "Title" placeholder="Enter Card Name as Title" required = "required"/><br><br>
+                    <label>Content</label>
+                    <input type="text" name = "Content" placeholder="Enter Card Content and Details" required = "required"/><br><br>
+                    <label>Deadline Date</label>
+                    <input type = "date" name = "Deadline" required = "required"/><br><br>
+                    
+                {% endif %}
+                <label>Mark as complete</label>
+                <input type="checkbox" name = "Mark_as_complete"/><br><br>
+                <input type="submit" name="Save"/>
+            </form>
+        </div>
+    </body>
+</html>

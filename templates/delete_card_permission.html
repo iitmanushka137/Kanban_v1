@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirmation Page</title>
+    <style>
+        a{
+            color: white;
+        }
+        
+        label{
+            font-size: larger;
+            color: white;
+        }
+        p{
+            font-size: larger;
+            color: white;
+        }
+        body, html {
+                height: 100%;
+        }
+        body {
+            background: linear-gradient(to bottom, #000000 0%, #b0b0b2 100%);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <form method = "POST">
+        <div><p style="text-align:center;">{{ display_name }}, Are you sure you want to delete the list and its cards ?</p>
+            <center><select class="form-select" name="Delete">
+                <option selected>Open this Yes or No</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+              </select>
+            <input type="submit" name="Save"/></center>
+        </form>
+    </div>
+</body>
+</html>

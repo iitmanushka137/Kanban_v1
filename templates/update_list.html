@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Add List Page : Kanban</title>
+    </head>
+    <style>
+        a{
+            color: white;
+        }
+        h3{
+            font-size: larger;
+            color: white;
+        }
+        label{
+            font-size: larger;
+            color: white;
+        }
+        p{
+            font-size: larger;
+            color: white;
+        }
+        body, html {
+                height: 100%;
+        }
+        body {
+            background: linear-gradient(to bottom, #000000 0%, #b0b0b2 100%);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+    </style>
+    <body>
+        <div align="right">
+            <a href="/{{ display_name }}/{{ ID }}/home">Home Page</a> | 
+            <a href="/{{ display_name }}/{{ ID }}/summary">Summary</a> |
+            <a href="/">Logout</a>
+        </div>
+        <div>
+            <h3>Welcome {{ display_name }}</h3>
+        </div>
+
+        <div align = "middle">
+            <p>Add a list</p>
+            <form method = "POST">
+                <label>List_id</label>
+                <input type = "text" name = "l_id" value = "{{ list_id }}" disabled/><br><br>
+                <label>Name</label>
+                <input type = "text" name = "l_name" value="{{ name }}"/><br><br>
+                <label>Description</label>
+                <input type = "text" name = "Description"/><br><br>
+                <button type = "submit">Save</button>
+            </form>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Home Page : Kanban</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        
+    </head>
+    <body>
+        <div align="right">
+            <a href="/{{ display_name }}/{{ ID }}/completed">Complete & Incomplete</a> | 
+            <a href="/{{ display_name }}/{{ ID }}/summary">Summary</a> |
+            <a href="/">Logout</a>
+        </div>
+        <div><h3>Welcome {{ display_name }}</h3></div>
+        {% if (l) %}
+        <div class = "row align-items-start">
+            {% for row in l %}
+            <div class = "col", style = "color:#fff; border:3px solid black; background: linear-gradient(to bottom, #f68fea 0%, #8c91f8 100%);">
+                <p style = "border:3px solid black">{{ row['list_name'] }} &nbsp; 
+                    <a href="/{{ display_name }}/{{ ID }}/{{ row['list_id'] }}/list_update"><button>Update</button></a>
+                    <a href="/{{ display_name }}/{{ ID }}/{{ row['list_id'] }}/list_delete"><button>Delete</button></a>
+                </p><br>
+                
+                {% if (c) %}
+                    {% for r in c %}
+                    {% if (r['list_id'] == row['list_id']) %}
+                    <div class = "box", style = "border:3px solid black; background: transparent;">
+                        <p style="border:3px solid black">{{ r['card_name'] }} &nbsp;   
+                            <a href="/{{ display_name }}/{{ ID }}/{{ row['list_id'] }}/{{ row['list_name'] }}/{{ r['card_id'] }}/card_update"><button>Update</button></a>
+                            <a href="/{{ display_name }}/{{ ID }}/{{ r['card_id'] }}/card_delete"><button>Delete</button></a>
+                        </p><br>
+                        <p align="left">Created Date <br>{{ r['created_date'] }}</p>
+                        <p align="center"> {{ r['card_details'] }}</p><br>
+                        <p align = "right"><strong>Deadline</strong><br> {{ r['deadline_date'] }}</p><br>
+                    </div><br>
+                    {% endif %}
+                    {% endfor %}
+                {% else %}
+                <div> 
+                    <p align = "middle">There are no cards in the list</p>
+                </div>
+                {% endif %}
+                <a href = "/addcard/{{ ID }}/{{ display_name }}/{{ row['list_name'] }}/{{ row['list_id'] }}"><img src = "/static/IMG/add.png" height="30px" width="50px" alt = "+"></a>
+            </div>&nbsp;&nbsp;
+            {% endfor %}
+        </div>
+        {% else %}
+        <div> 
+            <p align = "middle">There are no lists in the board</p>
+        </div>
+        {% endif %}
+        <div>
+            <a href = "/name/addlist/{{ display_name }}/{{ ID }}"> <img src="/static/IMG/add.png" height="30px" width="50px" alt = "+"></a> Add a list
+        </div>
+    </body>
+</html>
+
+
+

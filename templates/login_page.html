@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Kanban App</title>
+        <style>
+            h1{
+                text-align: center;
+                color: white;
+            }
+            label{
+                font-size: larger;
+                color: white;
+            }
+            body, html {
+                height: 100%;
+            }
+            body {
+                background: linear-gradient(to bottom, #000000 0%, #b0b0b2 100%);
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Simple Kanban</h1>
+        <br><br><br><br>
+        <form method = "POST" align="middle">
+            <label>User_id</label>
+            <input type = "number" name = "ID" placeholder="Enter the User id" required="required"><br><br>
+            <label>Name</label>
+            <input type = "text" name = "user_name" placeholder="Enter Your Full Name" required="required"/><br><br>
+            <input type = "submit" name = "Login"/>
+        </form>
+    </body>
+</html>
